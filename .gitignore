@@ -1,3 +1,5 @@
 qtile/.config/qtile/config.py
 bspwm/.config/bspwm/bspwmrc
 polybar/.config/polybar/config
+fish/.config/fish/fish_variables
+__*__
