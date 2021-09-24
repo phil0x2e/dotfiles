@@ -84,7 +84,7 @@ groups.append(
             ),
             DropDown(
                 "wttr",
-                f"{terminal} fish -c 'curl -s wttr.in && sleep 60'",
+                f"{terminal} bash -c 'curl -s wttr.in && sleep 60'",
                 height=0.9,
                 opacity=0.9,
                 warp_pointer=False,
