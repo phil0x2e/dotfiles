@@ -38,7 +38,7 @@ gray = #a89984
 orange = #d65d0e
 
 [bar/primary]
-monitor = ${env:MONITOR:HDMI-0}
+monitor = ${env:MONITOR:LVDS1}
 width = 100%
 height = 27
 ;offset-x = 1%
@@ -67,8 +67,8 @@ font-2 = siji:pixelsize=10;1
 font-3 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false
 
 modules-left = bspwm
-modules-center = mpd monocle_primary
-modules-right = filesystem xkeyboard memory cpu temperature wlan eth pulseaudio date
+modules-center = mpd monocle
+modules-right = filesystem xkeyboard memory cpu temperature backlight battery pulseaudio wlan eth date
 
 tray-position = right
 tray-padding = 2
@@ -88,8 +88,8 @@ scroll-down = bspwm-deskprev
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[bar/secondary]
-monitor = ${env:MONITOR:DP-0}
+[bar/hdmi]
+monitor = ${env:MONITOR:HDMI1}
 width = 100%
 height = 27
 ;offset-x = 1%
@@ -115,11 +115,11 @@ module-margin-right = 2
 font-0 = fixed:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
-font-3 = NotoColorEmoji:fontformat=true:type:scale=10:antialias=false
+font-3 = NotoColorEmoji:fontformat=truetype:scale=10:antialias=false
 
 modules-left = bspwm
-modules-center = mpd monocle_secondary
-modules-right = filesystem xkeyboard memory cpu temperature wlan eth pulseaudio date
+modules-center = mpd monocle_hdmi
+modules-right = filesystem xkeyboard memory cpu temperature battery pulseaudio wlan eth date
 
 tray-position = right
 tray-padding = 2
@@ -139,22 +139,22 @@ scroll-down = bspwm-deskprev
 cursor-click = pointer
 cursor-scroll = ns-resize
 
-[module/monocle_primary]
+[module/monocle]
 type = custom/script
-interval = 0.5
+interval = 2
 
-exec = ~/scripts/monocle.sh HDMI-0
+exec = ~/scripts/monocle.sh LVDS1
 format-underline = ${colors.primary}
 format-foreground = ${colors.foreground}
 format-background = ${colors.primary}
 format-prefix = "  🖥️  "
 label = "%output%  "
 
-[module/monocle_secondary]
+[module/monocle_hdmi]
 type = custom/script
-interval = 0.5
+interval = 2
 
-exec = ~/scripts/monocle.sh DP-0
+exec = ~/scripts/monocle.sh HDMI1
 format-underline = ${colors.primary}
 format-foreground = ${colors.foreground}
 format-background = ${colors.primary}
@@ -169,7 +169,7 @@ label = %title:0:30:...%
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = "⌨️  "
+format-prefix = "⌨️ "
 format-prefix-foreground = ${colors.foreground-alt}
 format-prefix-underline = ${colors.secondary}
 
@@ -186,7 +186,6 @@ type = internal/fs
 interval = 25
 
 mount-0 = /
-mount-1 = /home
 
 format-mounted-underline = ${colors.secondary}
 label-mounted = %{F#458588}%mountpoint%%{F-}: %percentage_used%%
@@ -213,7 +212,7 @@ label-urgent = %name%!
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = %name%
+label-empty =
 label-empty-foreground = ${colors.foreground-alt}
 label-empty-padding = 2
 
@@ -233,6 +232,24 @@ icon-next = 
 label-song-maxlen = 25
 label-song-ellipsis = true
 
+[module/backlight]
+type = internal/backlight
+
+format-underline = ${colors.secondary}
+format = <ramp> <label>
+label = %percentage%%
+font = 3
+
+; Use the following command to list available cards:
+; $ ls -1 /sys/class/backlight/
+card = intel_backlight
+
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
 [module/cpu]
 type = internal/cpu
 interval = 2
@@ -244,39 +261,42 @@ label = %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = "💾  "
+format-prefix = "💾 "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.secondary}
 label = %percentage_used%%
 
 [module/wlan]
 type = internal/network
-interface = net1
+interface = wlp8s0
 interval = 3.0
 
+format-connected-prefix = "📶 "
 format-connected = <label-connected>
 format-connected-underline = ${colors.secondary}
-label-connected = %essid%
+label-connected = %essid% - %signal%%
 
-format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
+format-disconnected-prefix = "📶 "
+format-disconnected = <label-disconnected>
+format-disconnected-underline = ${colors.primary}
+label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = enp34s0
+interface = enp9s0
 interval = 3.0
 
-format-connected-underline = ${colors.secondary}
-format-connected-prefix = "🔗  "
+format-connected-underline = ${colors.green}
+format-connected-prefix = "🔗 "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
+format-disconnected =
 
-format-disconnected = <label-disconnected>
-format-disconnected-underline = ${colors.red}
-label-disconnected = %ifname% disconnected
+;format-disconnected = <label-disconnected>
+;format-disconnected-underline = ${self.format-connected-underline}
+;label-disconnected = %ifname% disconnected
+;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
@@ -292,18 +312,19 @@ format-prefix = "🕓 "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.secondary}
 
-label = "%time%  📅 %date%"
+label = %time% 📅 %date%
 
 [module/pulseaudio]
+
 type = internal/pulseaudio
 
-format-volume-underline = ${colors.secondary}
 format-volume = <ramp-volume> <label-volume>
+format-volume-underline = ${colors.secondary}
 label-volume = %percentage%%
 label-volume-foreground = ${root.foreground}
 
-format-muted-underline = ${colors.primary}
 label-muted = 🔇 muted
+format-muted-underline = ${colors.primary}
 label-muted-foreground = ${colors.gray}
 
 ramp-volume-0 = 🔈
@@ -352,25 +373,39 @@ bar-volume-empty = ─
 bar-volume-empty-font = 2
 bar-volume-empty-foreground = ${colors.foreground-alt}
 
+[module/battery]
+type = internal/battery
+battery = BAT0
+
+time-format = %H:%M
+label-charging = ⚡ %percentage%% %time%
+format-charging = <label-charging>
+format-charging-underline = ${colors.secondary}
+
+label-discharging = 🔋 %percentage%% %time%
+format-discharging = <label-discharging>
+format-discharging-underline = ${colors.primary}
+
+label-full = 🔋Full
+format-full = <label-full>
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${colors.secondary}
+
 [module/temperature]
 type = internal/temperature
 thermal-zone = 0
 warn-temperature = 70
 
-; check devices
-;  for i in /sys/class/hwmon/hwmon*/temp*_input; do echo "$(<$(dirname $i)/name): $(cat ${i%_*}_label 2>/dev/null || echo $(basename ${i%_*})) $(readlink -f $i)"; done
-hwmon-path = /sys/devices/pci0000:00/0000:00:18.3/hwmon/hwmon0/temp1_input
-
+format-prefix = "🔥 "
 format = <label>
-format-prefix = "🔥  "
 format-underline = ${colors.secondary}
 label = %temperature-c%
 
+format-warn-prefix = "🔥🔥 "
 format-warn = <label-warn>
-format-warn-prefix = "🔥🔥  "
 format-warn-underline = ${colors.red}
 label-warn = %temperature-c%
-label-warn-foreground = ${colors.red}
+label-warn-foreground = ${colors.secondary}
 
 [settings]
 screenchange-reload = true

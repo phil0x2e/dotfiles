@@ -1,8 +1,27 @@
-#! /bin/sh
+#! /bin/bash
+bspc rule -r "*"
+
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-bspc monitor HDMI-0 -d I II III IV V
-bspc monitor DP-0 -d VI VII VIII IX X
+# Monitor setup
+if xrandr --listactivemonitors | grep "Monitors: 1" && xrandr --listactivemonitors | grep "LVDS1"
+then
+	bspc monitor LVDS1 -d I II III IV V VI VII VIII IX X
+	killall polybar ; polybar primary &
+fi
+
+if xrandr --listactivemonitors | grep "Monitors: 1" && xrandr --listactivemonitors | grep "HDMI1"
+then
+	bspc monitor HDMI1 -d I II III IV V VI VII VIII IX X
+	killall polybar ; polybar hdmi &
+fi
+
+if xrandr --listactivemonitors | grep "Monitors: 2" && xrandr --listactivemonitors | grep "HDMI1"
+then
+	bspc monitor LVDS1 -d I II III IV V
+	bspc monitor HDMI1 -d VI VII VIII IX X
+	killall polybar ; polybar primary &
+fi
 
 bspc config border_width         2
 bspc config window_gap          6
@@ -20,21 +39,20 @@ bspc config presel_feedback_color "#d79921"
 bspc config urgent_border_color "#cc241d"
 
 bspc rule -a MEGAsync state=floating
-#bspc rule -a "jitsi meet" state=floating
 
 #bspc rule -a Gimp desktop='^8' state=floating follow=on
 #bspc rule -a Chromium desktop='^2'
+#bspc rule -a mplayer2 state=floating
 #bspc rule -a Kupfer.py focus=on
 #bspc rule -a Screenkey manage=off
 
+xfsettingsd &# To set themes etc.
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-bash ~/.screenlayout/standard.sh &
 start-pulseaudio-x11 &
-killall xfce4-power-manager; xfce4-power-manager &
+killall pa-applet ; pa-applet &
+killall nm-applet ; nm-applet &
+xfce4-power-manager &
 dropbox &
 megasync &
-killall pamac-tray; pamac-tray &
-killall polybar; polybar primary & polybar secondary &
-nitrogen --restore; sleep 1; killall picom; picom -b &
-killall pa-applet; pa-applet &
-killall nm-applet; nm-applet &
+pamac-tray &
+nitrogen --restore; sleep 1; picom -b &
