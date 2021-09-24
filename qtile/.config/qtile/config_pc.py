@@ -27,7 +27,7 @@
 from typing import List  # noqa: F401
 from os.path import expanduser
 
-from libqtile import bar, layout, widget, qtile, hook
+from libqtile import bar, layout, widget, qtile
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
