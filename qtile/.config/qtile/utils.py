@@ -1,6 +1,6 @@
 #!/bin/python
-from libqtile import extension
 from libqtile.command.client import CommandClient
+from libqtile import extension
 
 power_menu = extension.CommandSet(
     dmenu_prompt="sys",
@@ -14,6 +14,16 @@ power_menu = extension.CommandSet(
     dmenu_command="rofi -dmenu",
     dmenu_ignorecase=True,
 )
+
+
+def float_to_front(qtile):
+    """
+    Bring all floating windows of the current group to front
+    """
+    for window in qtile.current_group.windows:
+        if window.floating:
+            window.cmd_bring_to_front()
+
 
 c = CommandClient()
 

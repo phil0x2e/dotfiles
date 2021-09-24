@@ -218,7 +218,7 @@ screens = [
                 widget.CurrentLayoutIcon(scale=0.8),
                 widget.WindowCount(fmt="[{}]  "),
                 widget.Prompt(),
-                widget.WindowName(background=colors.hl, foreground=colors.bg),
+                widget.WindowName(background=colors.bg, foreground=colors.hl),
                 dup_widgets["updates"],
                 widget.Sep(),
                 dup_widgets["cpu"],
@@ -290,10 +290,20 @@ def startup() -> None:
     if len(screens := qtile.screens) == 2:
         screens[1].set_group(qtile.groups[5])
 
-#@hook.subscribe.current_screen_change
-#def screen_change() -> None:
-#    screens = qtile.screens
-#    for s in screens:
-#        if s.active:
-#            s.set_group(qtile.groups[10])
-#
+
+@hook.subscribe.current_screen_change
+def screen_change() -> None:
+    """
+    Change the windowName widgets look when screen loses focus
+    """
+    curr = qtile.current_screen
+    screens = qtile.screens
+    for s in screens:
+        widgets = s.top.widgets
+        window_name_widget = [w for w in widgets if isinstance(w, widget.WindowName)][0]
+        if s == curr:
+            window_name_widget.background = colors.hl
+            window_name_widget.foreground = colors.bg
+        if s != curr:
+            window_name_widget.background = colors.bg
+            window_name_widget.foreground = colors.hl

@@ -6,7 +6,7 @@ from libqtile.lazy import lazy
 from libqtile import extension
 
 from colors import Colorscheme
-from utils import power_menu
+from utils import power_menu, float_to_front
 
 
 def init_keys(mod: str, colors: Colorscheme, terminal: str) -> List[Key]:
@@ -105,6 +105,12 @@ def init_keys(mod: str, colors: Colorscheme, terminal: str) -> List[Key]:
         Key([mod, "shift"], "Tab", lazy.prev_layout(), desc="Previous Layout"),
         Key([mod, "shift"], "space", lazy.window.toggle_floating(), desc="Toggle floating"),
         Key([mod], "f", lazy.window.toggle_fullscreen(), desc="Toggle fullscreen"),
+        Key(
+            [mod, "control"],
+            "space",
+            lazy.function(float_to_front),
+            desc="Bring all floating windows to front",
+        ),
         Key([mod], "m", lazy.group.setlayout("max"), desc="Change to Max Layout"),
         Key([mod], "t", lazy.group.setlayout("monadtall"), desc="Change to Monad Tall Layout"),
         Key([mod], "u", lazy.group.setlayout("monadwide"), desc="Change to Monad Wide Layout"),
