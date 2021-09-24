@@ -159,7 +159,6 @@ dup_widgets = {
     "df_home": widget.DF(partition="/home", visible_on_warn=False),
     "clock": widget.Clock(format=" %a %d.%m.%y %H:%M"),
     "temp": widget.ThermalSensor(fmt=" {}", tag_sensor="Tdie", **widget_defaults),
-    "updates": widget.CheckUpdates(),
 }
 
 screens = [
@@ -187,8 +186,6 @@ screens = [
                 widget.WindowCount(fmt="[{}] "),
                 widget.Prompt(),
                 widget.WindowName(background=colors.hl, foreground=colors.bg),
-                dup_widgets["updates"],
-                widget.Sep(),
                 dup_widgets["cpu"],
                 widget.Sep(),
                 dup_widgets["temp"],
@@ -223,8 +220,6 @@ screens = [
                 widget.WindowCount(fmt="[{}]  "),
                 widget.Prompt(),
                 widget.WindowName(background=colors.bg, foreground=colors.hl),
-                dup_widgets["updates"],
-                widget.Sep(),
                 dup_widgets["cpu"],
                 widget.Sep(),
                 dup_widgets["temp"],
