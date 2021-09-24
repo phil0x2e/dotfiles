@@ -36,6 +36,7 @@ from colour import Color
 
 from key_bindings import init_keys, update_keys_for_groups
 from colors import Colorscheme
+from hooks import init_hooks
 from utils import power_menu
 
 # gruvbox colors green hl
@@ -55,6 +56,7 @@ colors = gb_colors
 mod = "mod4"
 terminal = "kitty"
 home_path = expanduser("~")
+qtile_path = expanduser("~/.config/qtile/")
 
 keys = init_keys(mod, colors, terminal)
 
@@ -74,7 +76,7 @@ groups.append(
             ),
             DropDown(
                 "conf",
-                f"{terminal} nvim {home_path}/.config/qtile/config.py {home_path}/.config/qtile/key_bindings.py {home_path}/.config/qtile/colors.py {home_path}/.config/qtile/utils.py",
+                f"{terminal} nvim {qtile_path}/config.py {qtile_path}/key_bindings.py {qtile_path}/colors.py {qtile_path}/utils.py {qtile_path}/hooks.py",
                 # Copyright (c) 2010, 2014 dequis
                 height=0.9,
                 opacity=0.9,
@@ -133,6 +135,7 @@ widget_defaults = {
     "foreground": colors.fg,
 }
 extension_defaults = widget_defaults.copy()
+init_hooks(colors)
 
 dup_widgets = {
     "cpu": widget.CPU(
@@ -274,28 +277,3 @@ auto_minimize = True
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
-
-
-@hook.subscribe.startup_once
-def startup() -> None:
-    # If there are two screens set workspace on second screen to workspace 6
-    if len(screens := qtile.screens) == 2:
-        screens[1].set_group(qtile.groups[5])
-
-
-@hook.subscribe.current_screen_change
-def screen_change() -> None:
-    """
-    Change the windowName widgets look when screen loses focus
-    """
-    curr = qtile.current_screen
-    screens = qtile.screens
-    for s in screens:
-        widgets = s.top.widgets
-        window_name_widget = [w for w in widgets if isinstance(w, widget.WindowName)][0]
-        if s == curr:
-            window_name_widget.background = colors.hl
-            window_name_widget.foreground = colors.bg
-        if s != curr:
-            window_name_widget.background = colors.bg
-            window_name_widget.foreground = colors.hl
