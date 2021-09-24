@@ -216,7 +216,7 @@ screens = [
                 widget.CurrentLayoutIcon(scale=0.8),
                 widget.WindowCount(fmt="[{}]  "),
                 widget.Prompt(),
-                widget.WindowName(background=colors.hl, foreground=colors.bg),
+                widget.WindowName(background=colors.bg, foreground=colors.hl),
                 dup_widgets["cpu"],
                 widget.Sep(),
                 dup_widgets["temp"],
