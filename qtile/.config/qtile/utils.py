@@ -1,6 +1,7 @@
 #!/bin/python
 from libqtile.command.client import CommandClient
 from libqtile import extension
+from libqtile.core.manager import Qtile
 
 power_menu = extension.CommandSet(
     dmenu_prompt="sys",
@@ -16,7 +17,7 @@ power_menu = extension.CommandSet(
 )
 
 
-def float_to_front(qtile):
+def float_to_front(qtile: Qtile):
     """
     Bring all floating windows of the current group to front
     """
