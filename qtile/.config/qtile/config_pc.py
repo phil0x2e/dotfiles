@@ -128,8 +128,9 @@ common_layout_conf = {
 layouts = [
     layout.MonadTall(single_border_width=0, single_margin=0, **common_layout_conf),
     layout.MonadWide(single_border_width=0, single_margin=0, **common_layout_conf),
-    layout.Tile(shift_windows=True, **common_layout_conf),
+    layout.Columns(border_focus_stack=colors.yellow, margin_on_single=0, **common_layout_conf),
     layout.Max(),
+    # layout.Tile(shift_windows=True, **common_layout_conf),
     # layout.Matrix(**common_layout_conf),
     # layout.RatioTile(**common_layout_conf),
     # layout.Columns(border_focus_stack='#d75f5f', **common_layout_conf),

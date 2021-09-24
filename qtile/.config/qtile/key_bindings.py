@@ -114,6 +114,7 @@ def init_keys(mod: str, colors: Colorscheme, terminal: str) -> List[Key]:
         Key([mod], "m", lazy.group.setlayout("max"), desc="Change to Max Layout"),
         Key([mod], "t", lazy.group.setlayout("monadtall"), desc="Change to Monad Tall Layout"),
         Key([mod], "u", lazy.group.setlayout("monadwide"), desc="Change to Monad Wide Layout"),
+        Key([mod], "c", lazy.group.setlayout("columns"), desc="Change to Columns Layout"),
         # Other
         Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
         Key([mod, "shift"], "r", lazy.restart(), desc="Restart Qtile"),
