@@ -66,6 +66,10 @@ def init_keys(mod: str, colors: Colorscheme, terminal: str) -> List[Key]:
         Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
         Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
         Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
+        # Columns Layout swapping of columns
+        Key([mod, "shift", "control"], "h", lazy.layout.swap_column_left(), desc="Swap columns to the left"),
+        Key([mod, "shift", "control"], "l", lazy.layout.swap_column_right(), desc="Swap columns to the right"),
+        # Reset window sizes
         Key([mod], "n", lazy.layout.normalize(), desc="Reset all secondary window sizes"),
         Key([mod, "shift"], "n", lazy.layout.reset(), desc="Reset all window sizes"),
         Key(
