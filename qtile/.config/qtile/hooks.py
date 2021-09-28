@@ -26,3 +26,8 @@ def init_hooks(colors: Colorscheme) -> None:
             if s != curr:
                 window_name_widget.background = colors.bg
                 window_name_widget.foreground = colors.hl
+
+    @hook.subscribe.client_managed
+    def set_default_opacities(window) -> None:
+        if window.name == "kitty":
+            window.opacity = 0.9

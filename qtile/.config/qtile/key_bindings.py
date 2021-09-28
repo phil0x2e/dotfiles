@@ -120,6 +120,8 @@ def init_keys(mod: str, colors: Colorscheme, terminal: str) -> List[Key]:
         Key([mod], "u", lazy.group.setlayout("monadwide"), desc="Change to Monad Wide Layout"),
         Key([mod], "c", lazy.group.setlayout("columns"), desc="Change to Columns Layout"),
         # Other
+        Key([mod, "shift"], "o", lazy.window.down_opacity() , desc="Decrease opacity"),
+        Key([mod], "o", lazy.window.up_opacity() , desc="Increase opacity"),
         Key([mod, "shift"], "q", lazy.window.kill(), desc="Kill focused window"),
         Key([mod, "shift"], "r", lazy.restart(), desc="Restart Qtile"),
         Key([mod, "shift"], "e", lazy.shutdown(), desc="Shutdown Qtile"),
