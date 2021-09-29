@@ -1,0 +1,19 @@
+if [[ $GDMSESSION == dwm ]]
+then
+	./.screenlayout/standard.sh
+	lxsession &
+	killall pamac-tray; pamac-tray &
+	nitrogen --restore; sleep 1; killall picom; picom -b --backend glx --vsync &
+	killall pa-applet; pa-applet &
+	killall nm-applet; nm-applet &
+	slstatus &
+fi
+if [[ $GDMSESSION == qtile ]]
+then
+	./.screenlayout/standard.sh
+	lxsession &
+	killall pamac-tray; pamac-tray &
+	nitrogen --restore; sleep 1; killall picom; picom -b --backend glx --vsync &
+	killall pa-applet; pa-applet &
+	killall nm-applet; nm-applet &
+fi
