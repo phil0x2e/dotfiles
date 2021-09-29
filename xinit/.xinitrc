@@ -5,6 +5,6 @@ bash .screenlayout/standard.sh
 pa-applet &
 nm-applet &
 nitrogen --restore &
-picom -b &
+picom -b --backend glx --vsync &
 #exec dwm
 exec qtile start
