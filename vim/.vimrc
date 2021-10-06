@@ -22,11 +22,18 @@
 " ==================== Vim Plug ==================== {{{
 call plug#begin('~/.vim/plugged')
 " vim-plug plugins
-Plug 'ycm-core/YouCompleteMe'
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'ycm-core/YouCompleteMe'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neovim/nvim-lspconfig'
+"Plug 'folke/lsp-colors.nvim'
+"Plug 'nvim-lua/completion-nvim'
+"Plug 'hrsh7th/cmp-vsnip'
+"Plug 'hrsh7th/vim-vsnip'
+"Plug 'hrsh7th/cmp-nvim-lsp'
+"Plug 'hrsh7th/cmp-buffer'
+"Plug 'hrsh7th/nvim-cmp'
 
-Plug 'ctrlpvim/ctrlp.vim'
-Plug 'tacahiroy/ctrlp-funky'
+Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'mhinz/vim-signify'
 Plug 'vim-syntastic/syntastic'
@@ -63,9 +70,12 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 1
 
-" Ctrl-p
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_max_files=0
+" FZF
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+
 " Ignore those files when searching
 set wildignore+=*.pdf,*.jpeg,*.jpg,*.png,*.tif,*.doc,*.docx,*.ods,*.kdbx,*.kdb
 set wildignore+=*.mp3,*.wav,*.mp4
@@ -76,9 +86,9 @@ set wildignore+=node_modules,*venv*
 let g:highlightedyank_highlight_duration = 300
 
 " ycm
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_auto_hover = 1
+"let g:ycm_autoclose_preview_window_after_completion = 1
+"let g:ycm_autoclose_preview_window_after_insertion = 1
+"let g:ycm_auto_hover = 1
 
 " coc
 inoremap <silent><expr> <TAB>
@@ -92,13 +102,14 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
+
 " GoTo code navigation.
-"nmap <silent> gd <Plug>(coc-definition)
-"nmap <silent> gh :call CocActionAsync('doHover')<cr>
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gh :call CocActionAsync('doHover')<cr>
 
 "nmap <silent> gh <Plug>(YCMHover) " Currently not supported by nvim
-nmap <silent> gh :YcmCompleter GetDoc<cr>
-nmap <silent> gd :YcmCompleter GoToDefinition<cr>
+"nmap <silent> gh :YcmCompleter GetDoc<cr>
+"nmap <silent> gd :YcmCompleter GoToDefinition<cr>
 
 " vimwiki
 let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/'}]
