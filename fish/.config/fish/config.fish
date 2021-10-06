@@ -5,6 +5,7 @@ abbr -a -g nv nvim
 abbr -a -g sps "sudo pacman -S"
 abbr -a -g cd.. "cd .."
 set -g -x shell fish
+set -g -x FZF_DEFAULT_COMMAND "fd -H --exclude={.local,.cache,.git,.idea,.vscode,.sass-cache,node_modules,build,tmp,__pycache__,*venv*} --type f"
 
 if set -q SSH_CONNECTION
   set -g -x EDITOR vim
