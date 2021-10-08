@@ -71,10 +71,13 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 1
 
 " FZF
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-
+command! F :Files
+command! GF :GFiles
+command! B :Buffers
+command! L :Lines
+command! BL :BLines
+command! M :Marks
+command! H :History
 
 " Ignore those files when searching
 set wildignore+=*.pdf,*.jpeg,*.jpg,*.png,*.tif,*.doc,*.docx,*.ods,*.kdbx,*.kdb
