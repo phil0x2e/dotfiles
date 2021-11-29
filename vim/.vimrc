@@ -115,7 +115,7 @@ nmap <silent> gh :call CocActionAsync('doHover')<cr>
 "nmap <silent> gd :YcmCompleter GoToDefinition<cr>
 
 " vimwiki
-let g:vimwiki_list = [{'path': '~/Dropbox/vimwiki/'}]
+let g:vimwiki_list = [{'path': '~/MEGA/vimwiki/'}]
 
 " lightline
 set laststatus=2

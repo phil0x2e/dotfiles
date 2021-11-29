@@ -158,7 +158,7 @@ dup_widgets = {
     "df_root": widget.DF(partition="/", visible_on_warn=False, fmt=" {}"),
     "df_home": widget.DF(partition="/home", visible_on_warn=False),
     "clock": widget.Clock(format=" %a %d.%m.%y %H:%M"),
-    "temp": widget.ThermalSensor(fmt=" {}", tag_sensor="Tdie", **widget_defaults),
+    "temp": widget.ThermalSensor(fmt=" {}", tag_sensor="Tccd1", **widget_defaults),
 }
 
 screens = [
