@@ -39,9 +39,9 @@ from colors import Colorscheme
 from hooks import init_hooks
 from utils import power_menu
 
-# gruvbox colors blue hl
+# gruvbox colors green hl
 gb_colors = Colorscheme(
-    hl="#458588",
+    hl="#98971a",
     fg="#ebdbb2",
     bg="#282828",
     red="#cc241d",
@@ -119,7 +119,7 @@ init_hooks(colors)
 
 common_layout_conf = {
     "border_width": 2,
-    "margin": 5,
+    "margin": 2,
     "ratio": 0.55,
     "border_focus": colors.hl,
     "border_normal": colors.bg,
@@ -158,7 +158,8 @@ dup_widgets = {
     "df_root": widget.DF(partition="/", visible_on_warn=False, fmt=" {}"),
     "df_home": widget.DF(partition="/home", visible_on_warn=False),
     "clock": widget.Clock(format=" %a %d.%m.%y %H:%M"),
-    "temp": widget.ThermalSensor(fmt=" {}", tag_sensor="Tccd1", **widget_defaults),
+    "temp": widget.ThermalSensor(fmt=" {}", tag_sensor="temp1", **widget_defaults),
+    "updates": widget.CheckUpdates(),
 }
 
 screens = [
@@ -166,7 +167,7 @@ screens = [
         top=bar.Bar(
             [
                 widget.Image(
-                    filename="~/Dropbox/icons/arch.png",
+                    filename="~/Dropbox/icons/manjaro.png",
                     mouse_callbacks={
                         "Button1": lambda: qtile.cmd_spawn("jgmenu_run"),
                         "Button3": lambda: qtile.cmd_run_extension(power_menu),
@@ -186,6 +187,18 @@ screens = [
                 widget.WindowCount(fmt="[{}] "),
                 widget.Prompt(),
                 widget.WindowName(background=colors.hl, foreground=colors.bg),
+                widget.Battery(
+                    battery="BAT0",
+                    format="{char} {percent:2.0%} {hour:d}:{min:02d}",
+                    fmt=" {}",
+                    charge_char="+",
+                    discharge_char="-",
+                    full_char="o",
+                    update_interval=30,
+                ),
+                widget.Sep(),
+                dup_widgets["updates"],
+                widget.Sep(),
                 dup_widgets["cpu"],
                 widget.Sep(),
                 dup_widgets["temp"],
@@ -193,7 +206,6 @@ screens = [
                 dup_widgets["mem"],
                 widget.Sep(),
                 dup_widgets["df_root"],
-                dup_widgets["df_home"],
                 widget.Sep(),
                 dup_widgets["clock"],
                 widget.Sep(),
@@ -220,6 +232,18 @@ screens = [
                 widget.WindowCount(fmt="[{}]  "),
                 widget.Prompt(),
                 widget.WindowName(background=colors.bg, foreground=colors.hl),
+                widget.Battery(
+                    battery="BAT0",
+                    format="{char} {percent:2.0%} {hour:d}:{min:02d}",
+                    fmt=" {}",
+                    charge_char="+",
+                    discharge_char="-",
+                    full_char="o",
+                    update_interval=30,
+                ),
+                widget.Sep(),
+                dup_widgets["updates"],
+                widget.Sep(),
                 dup_widgets["cpu"],
                 widget.Sep(),
                 dup_widgets["temp"],
@@ -227,7 +251,6 @@ screens = [
                 dup_widgets["mem"],
                 widget.Sep(),
                 dup_widgets["df_root"],
-                dup_widgets["df_home"],
                 widget.Sep(),
                 dup_widgets["clock"],
             ],
