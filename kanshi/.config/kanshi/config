@@ -1,0 +1,8 @@
+profile laptop {
+	output eDP-1 enable
+}
+
+profile tv_living_room {
+	output eDP-1 disable
+	output "Samsung Electric Company SAMSUNG 0x01000600" enable scale 2
+}
