@@ -1,2 +1,0 @@
-#!/bin/bash
-sxiv -q $@ *
