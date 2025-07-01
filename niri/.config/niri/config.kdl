@@ -258,7 +258,7 @@ layout {
 spawn-at-startup "waybar"
 spawn-at-startup "nm-applet"
 spawn-at-startup "kanshi"
-spawn-at-startup "swaybg" "-i" "/home/phil/Pictures/wallpaper/RICK AND MORTY WALLPAPER.jpg"
+spawn-at-startup "swaybg" "-i" "/home/phil/Pictures/wallpaper/niri_wallpaper.jpg"
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -352,7 +352,8 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-i" "/home/phil/Pictures/wallpaper/RICK AND MORTY WALLPAPER.jpg"; }
+    Mod+Shift+D hotkey-overlay-title="Run an executable: fuzzel in PATH" { spawn "fuzzel" "--list-executables-in-path"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-i" "/home/phil/Pictures/wallpaper/niri_wallpaper.jpg"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
