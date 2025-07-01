@@ -257,8 +257,9 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 spawn-at-startup "nm-applet"
-spawn-at-startup "kanshi"
 spawn-at-startup "swaybg" "-i" "/home/phil/Pictures/wallpaper/niri_wallpaper.jpg"
+spawn-at-startup "kanshi" // dynamic display configuration
+spawn-at-startup "mako" // Notifications
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
@@ -332,6 +333,10 @@ window-rule {
 /-window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+}
+
+switch-events {
+    lid-close { spawn "swaylock" "-i" "/home/phil/Pictures/wallpaper/niri_wallpaper.jpg"; }
 }
 
 binds {
