@@ -337,6 +337,7 @@ window-rule {
 
 switch-events {
     lid-close { spawn "swaylock" "-i" "/home/phil/Pictures/wallpaper/niri_wallpaper.jpg"; }
+    lid-open { spawn "notify-send" "Welcome back!"; }
 }
 
 binds {
