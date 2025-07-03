@@ -4,7 +4,8 @@
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 
 environment {
-    DISPLAY ":0"
+    DISPLAY ":0" // for xwayland-satellite
+    ELECTRON_OZONE_PLATFORM_HINT "auto" // To run electron apps in wayland
 }
 
 // Input device configuration.
