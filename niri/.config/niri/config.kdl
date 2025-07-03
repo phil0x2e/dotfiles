@@ -3,6 +3,10 @@
 // Check the wiki for a full description of the configuration:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
 
+environment {
+    DISPLAY ":0"
+}
+
 // Input device configuration.
 // Find the full list of options on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Input
@@ -260,6 +264,7 @@ spawn-at-startup "nm-applet"
 spawn-at-startup "swaybg" "-i" "/home/phil/Pictures/wallpaper/niri_wallpaper.jpg"
 spawn-at-startup "kanshi" // dynamic display configuration
 spawn-at-startup "mako" // Notifications
+spawn-at-startup "xwayland-satellite" // Xorg support
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.
 // If the client will specifically ask for CSD, the request will be honored.
