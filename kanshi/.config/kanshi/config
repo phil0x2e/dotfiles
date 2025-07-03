@@ -2,6 +2,24 @@ profile laptop {
 	output eDP-1 enable
 }
 
+profile docking_station_home {
+	output eDP-1 {
+		enable
+		scale 1
+		position 0,0
+	}
+	output "Microstep MAG274QRF-QD CA8A283600464" {
+		enable
+		scale 1
+		position 1920,0
+	}
+	output "Dell Inc. DELL U2422H BL40G83" {
+		enable
+		scale 1
+		position 4480,0
+	}
+}
+
 profile tv_living_room {
 	output eDP-1 disable
 	output "Samsung Electric Company SAMSUNG 0x01000600" enable scale 2
