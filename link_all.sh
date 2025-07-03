@@ -1,2 +1,2 @@
 #!/bin/bash
-stow $(ls -la | awk '$1 ~ /^d.+/ && $NF !~ /\..*/ {print $NF}')
+stow "$(ls -l | awk '$1 ~ /^d/ {print $NF}')"
