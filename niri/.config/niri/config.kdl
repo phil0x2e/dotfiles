@@ -387,6 +387,7 @@ binds {
     Mod+O repeat=false { toggle-overview; }
 
     Mod+Q { close-window; }
+    Alt+F4 { close-window; }
 
     Mod+Left  { focus-column-left; }
     Mod+Down  { focus-window-down; }
