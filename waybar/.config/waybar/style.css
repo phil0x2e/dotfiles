@@ -1,12 +1,15 @@
+@define-color background rgba(43, 48, 59, 1);
+@define-color text #ffffff;
+
 * {
     font-family: 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
     font-size: 13px;
 }
 
 window#waybar {
-    background-color: rgba(43, 48, 59, 1);
+    background-color: @background;
     border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: #ffffff;
+    color: @text;
     transition-property: background-color;
     transition-duration: .5s;
 }
@@ -97,12 +100,29 @@ button:hover {
     margin-left: 20;
 }
 
+#clock:hover {
+    background-color: @text;
+    color: #64727D;
+}
+
 #battery {
     box-shadow: inset 0 -3px #ffffff;
 }
 
+#battery:hover {
+    background-color: #ffffff;
+    color: @background;
+    box-shadow: inset 0 -3px @background;
+}
+
 #battery.charging, #battery.plugged {
     box-shadow: inset 0 -3px #26A65B;
+}
+
+#battery.charging:hover, #battery.plugged:hover {
+    background-color: #26A65B;
+    color: @background;
+    box-shadow: inset 0 -3px @background;
 }
 
 @keyframes blink {
@@ -127,8 +147,20 @@ button:hover {
     box-shadow: inset 0 -3px #f53c3c;
 }
 
+#power-profiles-daemon.performance:hover {
+    background-color: #f53c3c;
+    color: @background;
+    box-shadow: inset 0 -3px @background;
+}
+
 #power-profiles-daemon.balanced {
     box-shadow: inset 0 -3px #2980b9;
+}
+
+#power-profiles-daemon.balanced:hover {
+    background-color: #2980b9;
+    color: @background;
+    box-shadow: inset 0 -3px @background;
 }
 
 #power-profiles-daemon.power-saver {
@@ -137,13 +169,8 @@ button:hover {
 
 #power-profiles-daemon.power-saver:hover {
     background-color: #2ecc71;
-    color: rgba(43, 48, 59, 1);
-}
-
-#power-profiles-daemon:hover {
-    background-color: #ffffff;
-    color: rgba(43, 48, 59, 1);
-    box-shadow: inset 0 -3px rgba(43, 48, 59, 1);
+    color: @background;
+    box-shadow: inset 0 -3px @background;
 }
 
 label:focus {
@@ -170,21 +197,40 @@ label:focus {
     box-shadow: inset 0 -3px #2980b9;
 }
 
+#network:hover {
+    background-color: #2980b9;
+    color: @background;
+    box-shadow: inset 0 -3px @background;
+}
+
 #network.disconnected {
     box-shadow: inset 0 -3px #f53c3c;
+}
+
+#network.disconnected:hover {
+    background-color: #f53c3c;
+    color: @background;
+    box-shadow: inset 0 -3px @background;
 }
 
 #pulseaudio {
     box-shadow: inset 0 -3px #f1c40f;
 }
 
+#pulseaudio:hover {
+    background-color: #f1c40f;
+    color: @background;
+    box-shadow: inset 0 -3px @background;
+}
+
 #pulseaudio.muted {
     box-shadow: inset 0 -3px #90b1b1;
 }
 
-/* you can set a style on hover for any module like this */
-#pulseaudio:hover {
-    background-color: #a37800;
+#pulseaudio.muted:hover {
+    background-color: #90b1b1;
+    color: @background;
+    box-shadow: inset 0 -3px @background;
 }
 
 #wireplumber {
@@ -235,8 +281,20 @@ label:focus {
     box-shadow: inset 0 -3px shade(#ecf0f1, 0.6);
 }
 
+#idle_inhibitor:hover {
+    background-color: shade(#ecf0f1, 0.6);
+    color: @background;
+    box-shadow: inset 0 -3px @background;
+}
+
 #idle_inhibitor.activated {
     box-shadow: inset 0 -3px #ecf0f1;
+}
+
+#idle_inhibitor.activated:hover {
+    background-color: #ecf0f1;
+    color: @background;
+    box-shadow: inset 0 -3px @background;
 }
 
 #mpd {
