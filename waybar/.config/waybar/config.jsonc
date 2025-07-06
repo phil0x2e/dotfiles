@@ -24,6 +24,7 @@
     "backlight",
     // "niri/language",
     "battery",
+    "privacy",
     "tray",
   ],
   // Modules configuration
