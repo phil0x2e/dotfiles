@@ -6,6 +6,7 @@
 environment {
     DISPLAY ":0" // for xwayland-satellite
     ELECTRON_OZONE_PLATFORM_HINT "auto" // To run electron apps in wayland
+    XDG_MENU_PREFIX: "arch-" // Fix open with in dolphin: https://www.lorenzobettini.it/2024/05/fixing-the-empty-open-with-in-dolphin-in-hyprland/
 }
 
 // Input device configuration.
