@@ -1,33 +1,35 @@
-@define-color background rgba(43, 48, 59, 1);
-@define-color text #ffffff;
+@import "mocha.css";
 
-@define-color clock #d0d0d0;
-@define-color battery #ffffff;
-@define-color battery_charging #26a65b;
-@define-color battery_critical #f53c3c;
-@define-color power_profile_performance #f53c3c;
-@define-color power_profile_balanced #2980b9;
-@define-color power_profile_saver #2ecc71;
-@define-color cpu #2ecc71;
-@define-color memory #9b59b6;
-@define-color disk #964b00;
-@define-color backlight #90b1b1;
-@define-color network #2980b9;
-@define-color network_disconnected #f53c3c;
-@define-color pulseaudio #f1c40f;
-@define-color pulseaudio_muted #90b1b1;
+@define-color background @base;
+/* @define-color text @text; */
+
+@define-color clock @subtext1;
+@define-color battery @rosewater;
+@define-color battery_charging @green;
+@define-color battery_critical @red;
+@define-color power_profile_performance @red;
+@define-color power_profile_balanced @sky;
+@define-color power_profile_saver @green;
+@define-color cpu @green;
+@define-color memory @mauve;
+@define-color disk @peach;
+@define-color backlight @teal;
+@define-color network @blue;
+@define-color network_disconnected @red;
+@define-color pulseaudio @yellow;
+@define-color pulseaudio_muted @overlay2;
 @define-color wireplumber #fff0f5;
-@define-color wireplumber_muted #f53c3c;
-@define-color temperature #f0932b;
-@define-color temperature_critical #eb4d4b;
-@define-color tray #2980b9;
+@define-color wireplumber_muted @red;
+@define-color temperature @peach;
+@define-color temperature_critical @red;
+@define-color tray @sapphire;
 @define-color idle_inhibitor shade(#ecf0f1, 0.6);
 @define-color idle_inhibitor_active #ecf0f1;
-@define-color language #00b093;
-@define-color keyboard_state #97e1ad;
-@define-color privacy_screenshare #cf5700;
-@define-color privacy_audio_in #1ca000;
-@define-color privacy_audio_out #0069d4;
+@define-color language @teal;
+@define-color keyboard_state @lavender;
+@define-color privacy_screenshare @peach;
+@define-color privacy_audio_in @green;
+@define-color privacy_audio_out @blue;
 
 * {
   font-family: "Noto Sans Mono", "Font Awesome 6 Free", "Font Awesome 6 Brands",
@@ -58,13 +60,13 @@ button {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
   background: inherit;
-  box-shadow: inset 0 -3px #ffffff;
+  box-shadow: inset 0 -3px @text;
 }
 
 #workspaces button {
   padding: 0 5px;
   background-color: transparent;
-  color: #ffffff;
+  color: @text;
 }
 
 #workspaces button:hover {
@@ -72,8 +74,8 @@ button:hover {
 }
 
 #workspaces button.focused {
-  background-color: #64727d;
-  box-shadow: inset 0 -3px #ffffff;
+  background-color: @surface1;
+  box-shadow: inset 0 -3px @blue;
 }
 
 #workspaces button.urgent {
