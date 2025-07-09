@@ -2,6 +2,19 @@ profile laptop {
 	output eDP-1 enable
 }
 
+profile pc_home {
+	output "Microstep MAG274QRF-QD CA8A283600464" {
+		enable
+		scale 1
+		position 0,0
+	}
+	output "Dell Inc. DELL U2422H BL40G83" {
+		enable
+		scale 1
+		position 2560,0
+	}
+}
+
 profile docking_station_home {
 	output eDP-1 {
 		enable
