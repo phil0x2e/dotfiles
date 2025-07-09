@@ -1,6 +1,34 @@
 @define-color background rgba(43, 48, 59, 1);
 @define-color text #ffffff;
 
+@define-color clock #d0d0d0;
+@define-color battery #ffffff;
+@define-color battery_charging #26a65b;
+@define-color battery_critical #f53c3c;
+@define-color power_profile_performance #f53c3c;
+@define-color power_profile_balanced #2980b9;
+@define-color power_profile_saver #2ecc71;
+@define-color cpu #2ecc71;
+@define-color memory #9b59b6;
+@define-color disk #964b00;
+@define-color backlight #90b1b1;
+@define-color network #2980b9;
+@define-color network_disconnected #f53c3c;
+@define-color pulseaudio #f1c40f;
+@define-color pulseaudio_muted #90b1b1;
+@define-color wireplumber #fff0f5;
+@define-color wireplumber_muted #f53c3c;
+@define-color temperature #f0932b;
+@define-color temperature_critical #eb4d4b;
+@define-color tray #2980b9;
+@define-color idle_inhibitor shade(#ecf0f1, 0.6);
+@define-color idle_inhibitor_active #ecf0f1;
+@define-color language #00b093;
+@define-color keyboard_state #97e1ad;
+@define-color privacy_screenshare #cf5700;
+@define-color privacy_audio_in #1ca000;
+@define-color privacy_audio_out #0069d4;
+
 * {
   font-family: "Noto Sans Mono", "Font Awesome 6 Free", "Font Awesome 6 Brands",
     monospace;
@@ -93,7 +121,6 @@ button:hover {
   margin-right: 0;
 }
 
-@define-color clock #d0d0d0;
 #clock {
   margin-right: 20;
   margin-left: 20;
@@ -107,7 +134,6 @@ button:hover {
   margin-bottom: 3;
 }
 
-@define-color battery #ffffff;
 #battery {
   box-shadow: inset 0 -3px @battery;
 }
@@ -118,7 +144,6 @@ button:hover {
   box-shadow: inset 0 -3px @background;
 }
 
-@define-color battery_charging #26a65b;
 #battery.charging,
 #battery.plugged {
   box-shadow: inset 0 -3px @battery_charging;
@@ -138,7 +163,6 @@ button:hover {
   }
 }
 
-@define-color battery_critical #f53c3c;
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
   background-color: @battery_critical;
@@ -150,7 +174,6 @@ button:hover {
   animation-direction: alternate;
 }
 
-@define-color power_profile_performance #f53c3c;
 #power-profiles-daemon.performance {
   box-shadow: inset 0 -3px @power_profile_performance;
 }
@@ -161,7 +184,6 @@ button:hover {
   box-shadow: inset 0 -3px @background;
 }
 
-@define-color power_profile_balanced #2980b9;
 #power-profiles-daemon.balanced {
   box-shadow: inset 0 -3px @power_profile_balanced;
 }
@@ -172,7 +194,6 @@ button:hover {
   box-shadow: inset 0 -3px @background;
 }
 
-@define-color power_profile_saver #2ecc71;
 #power-profiles-daemon.power-saver {
   box-shadow: inset 0 -3px @power_profile_saver;
 }
@@ -187,27 +208,22 @@ label:focus {
   background-color: #000000;
 }
 
-@define-color cpu #2ecc71;
 #cpu {
   box-shadow: inset 0 -3px @cpu;
 }
 
-@define-color memory #9b59b6;
 #memory {
   box-shadow: inset 0 -3px @memory;
 }
 
-@define-color disk #964b00;
 #disk {
   box-shadow: inset 0 -3px @disk;
 }
 
-@define-color backlight #90b1b1;
 #backlight {
   box-shadow: inset 0 -3px @backlight;
 }
 
-@define-color network #2980b9;
 #network {
   box-shadow: inset 0 -3px @network;
 }
@@ -218,7 +234,6 @@ label:focus {
   box-shadow: inset 0 -3px @background;
 }
 
-@define-color network_disconnected #f53c3c;
 #network.disconnected {
   box-shadow: inset 0 -3px @network_disconnected;
 }
@@ -229,7 +244,6 @@ label:focus {
   box-shadow: inset 0 -3px @background;
 }
 
-@define-color pulseaudio #f1c40f;
 #pulseaudio {
   box-shadow: inset 0 -3px @pulseaudio;
 }
@@ -240,7 +254,6 @@ label:focus {
   box-shadow: inset 0 -3px @background;
 }
 
-@define-color pulseaudio_muted #90b1b1;
 #pulseaudio.muted {
   box-shadow: inset 0 -3px @pulseaudio_muted;
 }
@@ -251,12 +264,10 @@ label:focus {
   box-shadow: inset 0 -3px @background;
 }
 
-@define-color wireplumber #fff0f5;
 #wireplumber {
   box-shadow: inset 0 -3px @wireplumber;
 }
 
-@define-color wireplumber_muted #f53c3c;
 #wireplumber.muted {
   box-shadow: inset 0 -3px @wireplumber_muted;
 }
@@ -275,18 +286,15 @@ label:focus {
   background-color: #ffa000;
 }
 
-@define-color temperature #f0932b;
 #temperature {
   box-shadow: inset 0 -3px @temperature;
 }
 
-@define-color temperature_critical #eb4d4b;
 #temperature.critical {
   /* background-color: @temperature_critical; */
   box-shadow: inset 0 -3px @temperature_critical;
 }
 
-@define-color tray #2980b9;
 #tray {
   box-shadow: inset 0 -3px @tray;
 }
@@ -300,7 +308,6 @@ label:focus {
   background-color: #eb4d4b;
 }
 
-@define-color idle_inhibitor shade(#ecf0f1, 0.6);
 #idle_inhibitor {
   box-shadow: inset 0 -3px @idle_inhibitor;
 }
@@ -311,7 +318,6 @@ label:focus {
   box-shadow: inset 0 -3px @background;
 }
 
-@define-color idle_inhibitor_active #ecf0f1;
 #idle_inhibitor.activated {
   box-shadow: inset 0 -3px @idle_inhibitor_active;
 }
@@ -338,7 +344,6 @@ label:focus {
   box-shadow: inset 0 -3px #51a37a;
 }
 
-@define-color language #00b093;
 #language {
   box-shadow: inset 0 -3px @language;
   padding: 0 5px;
@@ -346,7 +351,6 @@ label:focus {
   min-width: 16px;
 }
 
-@define-color keyboard_state #97e1ad;
 #keyboard-state {
   box-shadow: inset 0 -3px @keyboard_state;
   padding: 0 0px;
@@ -379,17 +383,14 @@ label:focus {
   color: white;
 }
 
-@define-color privacy_screenshare #cf5700;
 #privacy-item.screenshare {
   box-shadow: inset 0 -3px @privacy_screenshare;
 }
 
-@define-color privacy_audio_in #1ca000;
 #privacy-item.audio-in {
   box-shadow: inset 0 -3px @privacy_audio_in;
 }
 
-@define-color privacy_audio_out #0069d4;
 #privacy-item.audio-out {
   box-shadow: inset 0 -3px @privacy_audio_out;
 }
