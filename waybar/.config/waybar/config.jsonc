@@ -14,7 +14,7 @@
     "clock"
   ],
   "modules-right": [
-    "idle_inhibitor",
+    // "idle_inhibitor",
     "pulseaudio",
     "network",
     "power-profiles-daemon",
