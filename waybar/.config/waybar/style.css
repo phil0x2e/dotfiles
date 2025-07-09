@@ -107,24 +107,26 @@ button:hover {
   margin-bottom: 3;
 }
 
+@define-color battery #ffffff;
 #battery {
-  box-shadow: inset 0 -3px #ffffff;
+  box-shadow: inset 0 -3px @battery;
 }
 
 #battery:hover {
-  background-color: #ffffff;
+  background-color: @battery;
   color: @background;
   box-shadow: inset 0 -3px @background;
 }
 
+@define-color battery_charging #26a65b;
 #battery.charging,
 #battery.plugged {
-  box-shadow: inset 0 -3px #26a65b;
+  box-shadow: inset 0 -3px @battery_charging;
 }
 
 #battery.charging:hover,
 #battery.plugged:hover {
-  background-color: #26a65b;
+  background-color: @battery_charging;
   color: @background;
   box-shadow: inset 0 -3px @background;
 }
@@ -136,10 +138,11 @@ button:hover {
   }
 }
 
+@define-color battery_critical #f53c3c;
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-  background-color: #f53c3c;
-  color: #ffffff;
+  background-color: @battery_critical;
+  color: @text;
   animation-name: blink;
   animation-duration: 0.5s;
   animation-timing-function: steps(12);
@@ -147,32 +150,35 @@ button:hover {
   animation-direction: alternate;
 }
 
+@define-color power_profile_performance #f53c3c;
 #power-profiles-daemon.performance {
-  box-shadow: inset 0 -3px #f53c3c;
+  box-shadow: inset 0 -3px @power_profile_performance;
 }
 
 #power-profiles-daemon.performance:hover {
-  background-color: #f53c3c;
+  background-color: @power_profile_performance;
   color: @background;
   box-shadow: inset 0 -3px @background;
 }
 
+@define-color power_profile_balanced #2980b9;
 #power-profiles-daemon.balanced {
-  box-shadow: inset 0 -3px #2980b9;
+  box-shadow: inset 0 -3px @power_profile_balanced;
 }
 
 #power-profiles-daemon.balanced:hover {
-  background-color: #2980b9;
+  background-color: @power_profile_balanced;
   color: @background;
   box-shadow: inset 0 -3px @background;
 }
 
+@define-color power_profile_saver #2ecc71;
 #power-profiles-daemon.power-saver {
-  box-shadow: inset 0 -3px #2ecc71;
+  box-shadow: inset 0 -3px @power_profile_saver;
 }
 
 #power-profiles-daemon.power-saver:hover {
-  background-color: #2ecc71;
+  background-color: @power_profile_saver;
   color: @background;
   box-shadow: inset 0 -3px @background;
 }
@@ -181,68 +187,78 @@ label:focus {
   background-color: #000000;
 }
 
+@define-color cpu #2ecc71;
 #cpu {
-  box-shadow: inset 0 -3px #2ecc71;
+  box-shadow: inset 0 -3px @cpu;
 }
 
+@define-color memory #9b59b6;
 #memory {
-  box-shadow: inset 0 -3px #9b59b6;
+  box-shadow: inset 0 -3px @memory;
 }
 
+@define-color disk #964b00;
 #disk {
-  box-shadow: inset 0 -3px #964b00;
+  box-shadow: inset 0 -3px @disk;
 }
 
+@define-color backlight #90b1b1;
 #backlight {
-  box-shadow: inset 0 -3px #90b1b1;
+  box-shadow: inset 0 -3px @backlight;
 }
 
+@define-color network #2980b9;
 #network {
-  box-shadow: inset 0 -3px #2980b9;
+  box-shadow: inset 0 -3px @network;
 }
 
 #network:hover {
-  background-color: #2980b9;
+  background-color: @network;
   color: @background;
   box-shadow: inset 0 -3px @background;
 }
 
+@define-color network_disconnected #f53c3c;
 #network.disconnected {
-  box-shadow: inset 0 -3px #f53c3c;
+  box-shadow: inset 0 -3px @network_disconnected;
 }
 
 #network.disconnected:hover {
-  background-color: #f53c3c;
+  background-color: @network_disconnected;
   color: @background;
   box-shadow: inset 0 -3px @background;
 }
 
+@define-color pulseaudio #f1c40f;
 #pulseaudio {
-  box-shadow: inset 0 -3px #f1c40f;
+  box-shadow: inset 0 -3px @pulseaudio;
 }
 
 #pulseaudio:hover {
-  background-color: #f1c40f;
+  background-color: @pulseaudio;
   color: @background;
   box-shadow: inset 0 -3px @background;
 }
 
+@define-color pulseaudio_muted #90b1b1;
 #pulseaudio.muted {
-  box-shadow: inset 0 -3px #90b1b1;
+  box-shadow: inset 0 -3px @pulseaudio_muted;
 }
 
 #pulseaudio.muted:hover {
-  background-color: #90b1b1;
+  background-color: @pulseaudio_muted;
   color: @background;
   box-shadow: inset 0 -3px @background;
 }
 
+@define-color wireplumber #fff0f5;
 #wireplumber {
-  box-shadow: inset 0 -3px #fff0f5;
+  box-shadow: inset 0 -3px @wireplumber;
 }
 
+@define-color wireplumber_muted #f53c3c;
 #wireplumber.muted {
-  box-shadow: inset 0 -3px #f53c3c;
+  box-shadow: inset 0 -3px @wireplumber_muted;
 }
 
 #custom-media {
@@ -259,17 +275,20 @@ label:focus {
   background-color: #ffa000;
 }
 
+@define-color temperature #f0932b;
 #temperature {
-  box-shadow: inset 0 -3px #f0932b;
+  box-shadow: inset 0 -3px @temperature;
 }
 
+@define-color temperature_critical #eb4d4b;
 #temperature.critical {
-  /* background-color: #eb4d4b; */
-  box-shadow: inset 0 -3px #eb4d4b;
+  /* background-color: @temperature_critical; */
+  box-shadow: inset 0 -3px @temperature_critical;
 }
 
+@define-color tray #2980b9;
 #tray {
-  box-shadow: inset 0 -3px #2980b9;
+  box-shadow: inset 0 -3px @tray;
 }
 
 #tray > .passive {
@@ -281,22 +300,24 @@ label:focus {
   background-color: #eb4d4b;
 }
 
+@define-color idle_inhibitor shade(#ecf0f1, 0.6);
 #idle_inhibitor {
-  box-shadow: inset 0 -3px shade(#ecf0f1, 0.6);
+  box-shadow: inset 0 -3px @idle_inhibitor;
 }
 
 #idle_inhibitor:hover {
-  background-color: shade(#ecf0f1, 0.6);
+  background-color: @idle_inhibitor;
   color: @background;
   box-shadow: inset 0 -3px @background;
 }
 
+@define-color idle_inhibitor_active #ecf0f1;
 #idle_inhibitor.activated {
-  box-shadow: inset 0 -3px #ecf0f1;
+  box-shadow: inset 0 -3px @idle_inhibitor_active;
 }
 
 #idle_inhibitor.activated:hover {
-  background-color: #ecf0f1;
+  background-color: @idle_inhibitor_active;
   color: @background;
   box-shadow: inset 0 -3px @background;
 }
@@ -317,15 +338,17 @@ label:focus {
   box-shadow: inset 0 -3px #51a37a;
 }
 
+@define-color language #00b093;
 #language {
-  box-shadow: inset 0 -3px #00b093;
+  box-shadow: inset 0 -3px @language;
   padding: 0 5px;
   margin: 0 5px;
   min-width: 16px;
 }
 
+@define-color keyboard_state #97e1ad;
 #keyboard-state {
-  box-shadow: inset 0 -3px #97e1ad;
+  box-shadow: inset 0 -3px @keyboard_state;
   padding: 0 0px;
   margin: 0 5px;
   min-width: 16px;
@@ -356,14 +379,17 @@ label:focus {
   color: white;
 }
 
+@define-color privacy_screenshare #cf5700;
 #privacy-item.screenshare {
-  box-shadow: inset 0 -3px #cf5700;
+  box-shadow: inset 0 -3px @privacy_screenshare;
 }
 
+@define-color privacy_audio_in #1ca000;
 #privacy-item.audio-in {
-  box-shadow: inset 0 -3px #1ca000;
+  box-shadow: inset 0 -3px @privacy_audio_in;
 }
 
+@define-color privacy_audio_out #0069d4;
 #privacy-item.audio-out {
-  box-shadow: inset 0 -3px #0069d4;
+  box-shadow: inset 0 -3px @privacy_audio_out;
 }
