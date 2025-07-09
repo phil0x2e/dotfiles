@@ -2,58 +2,59 @@
 @define-color text #ffffff;
 
 * {
-    font-family: 'Noto Sans Mono', 'Font Awesome 6 Free', 'Font Awesome 6 Brands', monospace;
-    font-size: 13px;
+  font-family: "Noto Sans Mono", "Font Awesome 6 Free", "Font Awesome 6 Brands",
+    monospace;
+  font-size: 13px;
 }
 
 window#waybar {
-    background-color: @background;
-    border-bottom: 3px solid rgba(100, 114, 125, 0.5);
-    color: @text;
-    transition-property: background-color;
-    transition-duration: .5s;
+  background-color: @background;
+  border-bottom: 3px solid rgba(100, 114, 125, 0.5);
+  color: @text;
+  transition-property: background-color;
+  transition-duration: 0.5s;
 }
 
 window#waybar.hidden {
-    opacity: 0.2;
+  opacity: 0.2;
 }
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
-    box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
-    border: none;
-    border-radius: 0;
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each button name */
+  border: none;
+  border-radius: 0;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
-    background: inherit;
-    box-shadow: inset 0 -3px #ffffff;
+  background: inherit;
+  box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button {
-    padding: 0 5px;
-    background-color: transparent;
-    color: #ffffff;
+  padding: 0 5px;
+  background-color: transparent;
+  color: #ffffff;
 }
 
 #workspaces button:hover {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #workspaces button.focused {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+  background-color: #64727d;
+  box-shadow: inset 0 -3px #ffffff;
 }
 
 #workspaces button.urgent {
-    background-color: #eb4d4b;
+  background-color: #eb4d4b;
 }
 
 #mode {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+  background-color: #64727d;
+  box-shadow: inset 0 -3px #ffffff;
 }
 
 #clock,
@@ -73,293 +74,296 @@ button:hover {
 #scratchpad,
 #power-profiles-daemon,
 #mpd {
-    padding: 0 10px;
-    color: #ffffff;
+  padding: 0 10px;
+  color: @text;
 }
 
 #window,
 #workspaces {
-    margin: 0 4px;
+  margin: 0 4px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
-    margin-right: 0;
+  margin-right: 0;
 }
 
+@define-color clock #d0d0d0;
 #clock {
-    margin-right: 20;
-    margin-left: 20;
-    box-shadow: inset 0 -3px #d0d0d0;
+  margin-right: 20;
+  margin-left: 20;
+  box-shadow: inset 0 -3px @clock;
 }
 
 #clock:hover {
-    background-color: #d0d0d0;
-    color: @background;
-    border-radius: 13;
-    margin-bottom: 3;
+  background-color: @clock;
+  color: @background;
+  border-radius: 13;
+  margin-bottom: 3;
 }
 
 #battery {
-    box-shadow: inset 0 -3px #ffffff;
+  box-shadow: inset 0 -3px #ffffff;
 }
 
 #battery:hover {
-    background-color: #ffffff;
-    color: @background;
-    box-shadow: inset 0 -3px @background;
+  background-color: #ffffff;
+  color: @background;
+  box-shadow: inset 0 -3px @background;
 }
 
-#battery.charging, #battery.plugged {
-    box-shadow: inset 0 -3px #26A65B;
+#battery.charging,
+#battery.plugged {
+  box-shadow: inset 0 -3px #26a65b;
 }
 
-#battery.charging:hover, #battery.plugged:hover {
-    background-color: #26A65B;
-    color: @background;
-    box-shadow: inset 0 -3px @background;
+#battery.charging:hover,
+#battery.plugged:hover {
+  background-color: #26a65b;
+  color: @background;
+  box-shadow: inset 0 -3px @background;
 }
 
 @keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: #000000;
-    }
+  to {
+    background-color: #ffffff;
+    color: #000000;
+  }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: steps(12);
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  background-color: #f53c3c;
+  color: #ffffff;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: steps(12);
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
 
 #power-profiles-daemon.performance {
-    box-shadow: inset 0 -3px #f53c3c;
+  box-shadow: inset 0 -3px #f53c3c;
 }
 
 #power-profiles-daemon.performance:hover {
-    background-color: #f53c3c;
-    color: @background;
-    box-shadow: inset 0 -3px @background;
+  background-color: #f53c3c;
+  color: @background;
+  box-shadow: inset 0 -3px @background;
 }
 
 #power-profiles-daemon.balanced {
-    box-shadow: inset 0 -3px #2980b9;
+  box-shadow: inset 0 -3px #2980b9;
 }
 
 #power-profiles-daemon.balanced:hover {
-    background-color: #2980b9;
-    color: @background;
-    box-shadow: inset 0 -3px @background;
+  background-color: #2980b9;
+  color: @background;
+  box-shadow: inset 0 -3px @background;
 }
 
 #power-profiles-daemon.power-saver {
-    box-shadow: inset 0 -3px #2ecc71;
+  box-shadow: inset 0 -3px #2ecc71;
 }
 
 #power-profiles-daemon.power-saver:hover {
-    background-color: #2ecc71;
-    color: @background;
-    box-shadow: inset 0 -3px @background;
+  background-color: #2ecc71;
+  color: @background;
+  box-shadow: inset 0 -3px @background;
 }
 
 label:focus {
-    background-color: #000000;
+  background-color: #000000;
 }
 
 #cpu {
-    box-shadow: inset 0 -3px #2ecc71;
+  box-shadow: inset 0 -3px #2ecc71;
 }
 
 #memory {
-    box-shadow: inset 0 -3px #9b59b6;
+  box-shadow: inset 0 -3px #9b59b6;
 }
 
 #disk {
-    box-shadow: inset 0 -3px #964B00;
+  box-shadow: inset 0 -3px #964b00;
 }
 
 #backlight {
-    box-shadow: inset 0 -3px #90b1b1;
+  box-shadow: inset 0 -3px #90b1b1;
 }
 
 #network {
-    box-shadow: inset 0 -3px #2980b9;
+  box-shadow: inset 0 -3px #2980b9;
 }
 
 #network:hover {
-    background-color: #2980b9;
-    color: @background;
-    box-shadow: inset 0 -3px @background;
+  background-color: #2980b9;
+  color: @background;
+  box-shadow: inset 0 -3px @background;
 }
 
 #network.disconnected {
-    box-shadow: inset 0 -3px #f53c3c;
+  box-shadow: inset 0 -3px #f53c3c;
 }
 
 #network.disconnected:hover {
-    background-color: #f53c3c;
-    color: @background;
-    box-shadow: inset 0 -3px @background;
+  background-color: #f53c3c;
+  color: @background;
+  box-shadow: inset 0 -3px @background;
 }
 
 #pulseaudio {
-    box-shadow: inset 0 -3px #f1c40f;
+  box-shadow: inset 0 -3px #f1c40f;
 }
 
 #pulseaudio:hover {
-    background-color: #f1c40f;
-    color: @background;
-    box-shadow: inset 0 -3px @background;
+  background-color: #f1c40f;
+  color: @background;
+  box-shadow: inset 0 -3px @background;
 }
 
 #pulseaudio.muted {
-    box-shadow: inset 0 -3px #90b1b1;
+  box-shadow: inset 0 -3px #90b1b1;
 }
 
 #pulseaudio.muted:hover {
-    background-color: #90b1b1;
-    color: @background;
-    box-shadow: inset 0 -3px @background;
+  background-color: #90b1b1;
+  color: @background;
+  box-shadow: inset 0 -3px @background;
 }
 
 #wireplumber {
-    box-shadow: inset 0 -3px #fff0f5;
+  box-shadow: inset 0 -3px #fff0f5;
 }
 
 #wireplumber.muted {
-    box-shadow: inset 0 -3px #f53c3c;
+  box-shadow: inset 0 -3px #f53c3c;
 }
 
 #custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
-    min-width: 100px;
+  background-color: #66cc99;
+  color: #2a5c45;
+  min-width: 100px;
 }
 
 #custom-media.custom-spotify {
-    background-color: #66cc99;
+  background-color: #66cc99;
 }
 
 #custom-media.custom-vlc {
-    background-color: #ffa000;
+  background-color: #ffa000;
 }
 
 #temperature {
-    box-shadow: inset 0 -3px #f0932b;
+  box-shadow: inset 0 -3px #f0932b;
 }
 
 #temperature.critical {
-    /* background-color: #eb4d4b; */
-    box-shadow: inset 0 -3px #eb4d4b;
+  /* background-color: #eb4d4b; */
+  box-shadow: inset 0 -3px #eb4d4b;
 }
 
 #tray {
-    box-shadow: inset 0 -3px #2980b9;
+  box-shadow: inset 0 -3px #2980b9;
 }
 
 #tray > .passive {
-    -gtk-icon-effect: dim;
+  -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
-    -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+  -gtk-icon-effect: highlight;
+  background-color: #eb4d4b;
 }
 
 #idle_inhibitor {
-    box-shadow: inset 0 -3px shade(#ecf0f1, 0.6);
+  box-shadow: inset 0 -3px shade(#ecf0f1, 0.6);
 }
 
 #idle_inhibitor:hover {
-    background-color: shade(#ecf0f1, 0.6);
-    color: @background;
-    box-shadow: inset 0 -3px @background;
+  background-color: shade(#ecf0f1, 0.6);
+  color: @background;
+  box-shadow: inset 0 -3px @background;
 }
 
 #idle_inhibitor.activated {
-    box-shadow: inset 0 -3px #ecf0f1;
+  box-shadow: inset 0 -3px #ecf0f1;
 }
 
 #idle_inhibitor.activated:hover {
-    background-color: #ecf0f1;
-    color: @background;
-    box-shadow: inset 0 -3px @background;
+  background-color: #ecf0f1;
+  color: @background;
+  box-shadow: inset 0 -3px @background;
 }
 
 #mpd {
-    box-shadow: inset 0 -3px #66cc99;
+  box-shadow: inset 0 -3px #66cc99;
 }
 
 #mpd.disconnected {
-    box-shadow: inset 0 -3px #f53c3c;
+  box-shadow: inset 0 -3px #f53c3c;
 }
 
 #mpd.stopped {
-    box-shadow: inset 0 -3px #90b1b1;
+  box-shadow: inset 0 -3px #90b1b1;
 }
 
 #mpd.paused {
-    box-shadow: inset 0 -3px #51a37a;
+  box-shadow: inset 0 -3px #51a37a;
 }
 
 #language {
-    box-shadow: inset 0 -3px #00b093;
-    padding: 0 5px;
-    margin: 0 5px;
-    min-width: 16px;
+  box-shadow: inset 0 -3px #00b093;
+  padding: 0 5px;
+  margin: 0 5px;
+  min-width: 16px;
 }
 
 #keyboard-state {
-    box-shadow: inset 0 -3px #97e1ad;
-    padding: 0 0px;
-    margin: 0 5px;
-    min-width: 16px;
+  box-shadow: inset 0 -3px #97e1ad;
+  padding: 0 0px;
+  margin: 0 5px;
+  min-width: 16px;
 }
 
 #keyboard-state > label {
-    padding: 0 5px;
+  padding: 0 5px;
 }
 
 #keyboard-state > label.locked {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #scratchpad {
-    background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #scratchpad.empty {
-	background-color: transparent;
+  background-color: transparent;
 }
 
 #privacy {
-    padding: 0;
+  padding: 0;
 }
 
 #privacy-item {
-    padding: 0 5px;
-    color: white;
+  padding: 0 5px;
+  color: white;
 }
 
 #privacy-item.screenshare {
-    box-shadow: inset 0 -3px #cf5700;
+  box-shadow: inset 0 -3px #cf5700;
 }
 
 #privacy-item.audio-in {
-    box-shadow: inset 0 -3px #1ca000;
+  box-shadow: inset 0 -3px #1ca000;
 }
 
 #privacy-item.audio-out {
-    box-shadow: inset 0 -3px #0069d4;
+  box-shadow: inset 0 -3px #0069d4;
 }
