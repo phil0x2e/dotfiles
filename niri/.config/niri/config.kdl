@@ -373,6 +373,7 @@ binds {
 
     Mod+Shift+W hotkey-overlay-title="Reload Waybar" { spawn "bash" "-c" "killall waybar ; waybar"; }
     Mod+Shift+Escape hotkey-overlay-title="Powermenu" { spawn "/home/phil/scripts/powermenu.sh"; }
+    Ctrl+Alt+Delete hotkey-overlay-title="Powermenu" { spawn "/home/phil/scripts/powermenu.sh"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
@@ -613,7 +614,6 @@ binds {
 
     // The quit action will show a confirmation dialog to avoid accidental exits.
     Mod+Shift+E { quit; }
-    Ctrl+Alt+Delete { quit; }
 
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
