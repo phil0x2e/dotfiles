@@ -374,6 +374,7 @@ binds {
     Mod+Shift+W hotkey-overlay-title="Reload Waybar" { spawn "bash" "-c" "killall waybar ; waybar"; }
     Mod+Shift+Escape hotkey-overlay-title="Powermenu" { spawn "/home/phil/scripts/powermenu.sh"; }
     Ctrl+Alt+Delete hotkey-overlay-title="Powermenu" { spawn "/home/phil/scripts/powermenu.sh"; }
+    Ctrl+Alt+C hotkey-overlay-title="Calc" { spawn "/home/phil/scripts/calc.sh"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
