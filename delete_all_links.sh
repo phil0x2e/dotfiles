@@ -1,2 +1,4 @@
 #!/bin/bash
-stow -D "$(ls -l | awk '$1 ~ /^d/ {print $NF}')"
+for dir in $(ls -l | awk '$1 ~ /^d/ {print $NF}'); do
+  stow -D "$dir"
+done
