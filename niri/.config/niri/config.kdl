@@ -372,9 +372,12 @@ binds {
     Mod+E hotkey-overlay-title="Open a File Explorer: Nautilus" { spawn "nautilus"; }
 
     Mod+Shift+W hotkey-overlay-title="Reload Waybar" { spawn "bash" "-c" "killall waybar ; waybar"; }
+
+    // Dmenues
     Mod+Shift+Escape hotkey-overlay-title="Powermenu" { spawn "/home/phil/scripts/powermenu.sh"; }
     Ctrl+Alt+Delete hotkey-overlay-title="Powermenu" { spawn "/home/phil/scripts/powermenu.sh"; }
     Ctrl+Alt+C hotkey-overlay-title="Calc" { spawn "/home/phil/scripts/calc.sh"; }
+    Ctrl+Alt+o hotkey-overlay-title="Enable/disable outputs" { spawn "/home/phil/scripts/niri_outputs.sh"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
