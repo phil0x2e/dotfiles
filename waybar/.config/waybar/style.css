@@ -11,10 +11,10 @@
 @define-color power_profile_balanced @sky;
 @define-color power_profile_saver @green;
 @define-color cpu @green;
-@define-color memory @mauve;
+@define-color memory @blue;
 @define-color disk @peach;
 @define-color backlight @teal;
-@define-color network @blue;
+@define-color network @mauve;
 @define-color network_disconnected @red;
 @define-color pulseaudio @yellow;
 @define-color pulseaudio_muted @overlay2;
@@ -30,6 +30,7 @@
 @define-color privacy_screenshare @peach;
 @define-color privacy_audio_in @green;
 @define-color privacy_audio_out @blue;
+@define-color bluetooth @blue;
 
 * {
   font-family: "Noto Sans Mono", "Font Awesome 6 Free", "Font Awesome 6 Brands",
@@ -395,4 +396,14 @@ label:focus {
 
 #privacy-item.audio-out {
   box-shadow: inset 0 -3px @privacy_audio_out;
+}
+
+#bluetooth {
+  box-shadow: inset 0 -3px @bluetooth;
+}
+
+#bluetooth:hover {
+  background-color: @bluetooth;
+  color: @background;
+  box-shadow: inset 0 -3px @background;
 }
