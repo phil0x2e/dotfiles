@@ -13,5 +13,7 @@ else
 end
 set PATH $PATH $HOME/.cargo/bin
 
-# set up fzf key bindings
-fzf --fish | source
+if command -q fzf
+  # set up fzf key bindings
+  fzf --fish | source
+end
