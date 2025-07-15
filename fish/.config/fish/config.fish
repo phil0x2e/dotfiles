@@ -12,3 +12,6 @@ else
   set -g -x EDITOR nvim
 end
 set PATH $PATH $HOME/.cargo/bin
+
+# set up fzf key bindings
+fzf --fish | source
