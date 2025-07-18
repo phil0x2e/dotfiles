@@ -2,6 +2,7 @@
 notification_path=/tmp/volume_adjust_notification_id
 expire_time=750
 
+# mute toggles audio/mic
 if [[ "$1" == "toggle mute" ]]; then
   wpctl "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"
   if [[ "$(wpctl "get-volume" "@DEFAULT_AUDIO_SINK@")" == *"[MUTED]" ]]; then
@@ -20,6 +21,9 @@ elif [[ "$1" == "toggle mute mic" ]]; then
   exit 0
 fi
 
+# disable mute when changing the volume
+wpctl "set-mute" "@DEFAULT_AUDIO_SINK@" 0
+# change the volume
 wpctl "set-volume" "@DEFAULT_AUDIO_SINK@" "$1"
 
 volume="$(wpctl "get-volume" "@DEFAULT_AUDIO_SINK@" | sed "s/Volume: //")"
