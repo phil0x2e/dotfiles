@@ -6,13 +6,8 @@
   // "width": 1280, // Waybar width
   "spacing": 4, // Gaps between modules (4px)
   // Choose the order of the modules
-  "modules-left": [
-    "niri/workspaces",
-    "niri/window"
-  ],
-  "modules-center": [
-    "clock"
-  ],
+  "modules-left": ["niri/workspaces", "niri/window"],
+  "modules-center": ["clock"],
   "modules-right": [
     // "idle_inhibitor",
     "privacy",
@@ -60,10 +55,7 @@
   "sway/scratchpad": {
     "format": "{icon} {count}",
     "show-empty": false,
-    "format-icons": [
-      "",
-      ""
-    ],
+    "format-icons": ["", ""],
     "tooltip": true,
     "tooltip-format": "{app}: {title}",
   },
@@ -123,21 +115,26 @@
     "critical-threshold": 80,
     // "format-critical": "{temperatureC}°C {icon}",
     "format": "{icon} {temperatureC}°C",
-    "format-icons": [
-      "",
-      "",
-      ""
-    ],
+    "format-icons": ["", "", ""],
   },
   "backlight": {
     // "device": "acpi_video1",
     "format": "{icon} {percent}%",
     "format-icons": [
-      "🌑",
-      "🌘",
-      "🌗",
-      "🌖",
-      "🌕"
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "󰽢",
     ],
   },
   "battery": {
@@ -153,13 +150,7 @@
     "format-alt": "{icon} {time}",
     // "format-good": "", // An empty format will hide the module
     // "format-full": "",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ],
+    "format-icons": ["", "", "", "", ""],
   },
   "battery#bat2": {
     "bat": "BAT2",
@@ -183,13 +174,7 @@
     "format-linked": "󰈀 {ifname} (No IP)",
     "format-disconnected": "⚠ Disconnected",
     "format-alt": "{ifname}: {ipaddr}/{cidr}",
-    "format-icons": [
-      "󰤯",
-      "󰤟",
-      "󰤢",
-      "󰤥",
-      "󰤨"
-    ],
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
   },
   "pulseaudio": {
     // "scroll-step": 1, // %, can be a float
@@ -206,11 +191,7 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": [
-        "",
-        "",
-        ""
-      ],
+      "default": ["", "", ""],
     },
     "on-click": "pavucontrol",
     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
