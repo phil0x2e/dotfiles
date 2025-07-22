@@ -227,6 +227,7 @@
   "niri/window": {
     "format": "{}",
     "icon": true,
+    "icon-size": 18,
   },
   "niri/language": {
     "format": "Lang: {short}",
