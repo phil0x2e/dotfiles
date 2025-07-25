@@ -6,7 +6,8 @@
 environment {
     DISPLAY ":0" // for xwayland-satellite
     ELECTRON_OZONE_PLATFORM_HINT "auto" // To run electron apps in wayland
-    XDG_MENU_PREFIX: "arch-" // Fix open with in dolphin: https://www.lorenzobettini.it/2024/05/fixing-the-empty-open-with-in-dolphin-in-hyprland/
+    XDG_MENU_PREFIX "arch-" // Fix open with in dolphin: https://www.lorenzobettini.it/2024/05/fixing-the-empty-open-with-in-dolphin-in-hyprland/
+    NIRI_WALLPAPER_PATH "/home/phil/Pictures/wallpaper/niri_wallpaper.jpg"
 }
 
 // Input device configuration.
@@ -265,7 +266,7 @@ layout {
 // This line starts waybar, a commonly used bar for Wayland compositors.
 spawn-at-startup "waybar"
 spawn-at-startup "nm-applet"
-spawn-at-startup "swaybg" "-i" "/home/phil/Pictures/wallpaper/niri_wallpaper.jpg"
+spawn-at-startup "sh" "-c" "swaybg -i $NIRI_WALLPAPER_PATH"
 spawn-at-startup "kanshi" // dynamic display configuration
 spawn-at-startup "mako" // Notifications
 spawn-at-startup "xwayland-satellite" // Xorg support
@@ -345,7 +346,7 @@ window-rule {
 }
 
 switch-events {
-    lid-close { spawn "swaylock" "-i" "/home/phil/Pictures/wallpaper/niri_wallpaper.jpg"; }
+    lid-close { spawn "sh" "-c" "swaylock -i $NIRI_WALLPAPER_PATH"; }
     lid-open { spawn "notify-send" "Welcome back!"; }
 }
 
@@ -368,11 +369,11 @@ binds {
     Mod+Return hotkey-overlay-title="Open a Terminal: kitty" { spawn "kitty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+Shift+D hotkey-overlay-title="Run an executable: fuzzel in PATH" { spawn "fuzzel" "--list-executables-in-path"; }
-    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-i" "/home/phil/Pictures/wallpaper/niri_wallpaper.jpg"; }
-    Ctrl+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock" "-i" "/home/phil/Pictures/wallpaper/niri_wallpaper.jpg"; }
+    Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "sh" "-c" "swaylock -i $NIRI_WALLPAPER_PATH"; }
+    Ctrl+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "sh" "-c" "swaylock -i $NIRI_WALLPAPER_PATH"; }
     Mod+E hotkey-overlay-title="Open a File Explorer: Nautilus" { spawn "nautilus"; }
 
-    Mod+Shift+W hotkey-overlay-title="Reload Waybar" { spawn "bash" "-c" "killall waybar ; waybar"; }
+    Mod+Shift+W hotkey-overlay-title="Reload Waybar" { spawn "sh" "-c" "killall waybar ; waybar"; }
 
     // Dmenues
     Mod+Shift+Escape hotkey-overlay-title="Powermenu" { spawn "/home/phil/scripts/powermenu.sh"; }
