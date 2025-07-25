@@ -7,6 +7,7 @@ environment {
     DISPLAY ":0" // for xwayland-satellite
     ELECTRON_OZONE_PLATFORM_HINT "auto" // To run electron apps in wayland
     XDG_MENU_PREFIX "arch-" // Fix open with in dolphin: https://www.lorenzobettini.it/2024/05/fixing-the-empty-open-with-in-dolphin-in-hyprland/
+    MOZ_ENABLE_WAYLAND "1" // Fix mullvad browser still using x11 and not starting
     NIRI_WALLPAPER_PATH "/home/phil/Pictures/wallpaper/niri_wallpaper.jpg"
 }
 
