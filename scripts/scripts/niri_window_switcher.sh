@@ -8,6 +8,6 @@ echo "$window_information"
 num_windows=$(echo "$window_information" | wc -l)
 num_lines=$((num_windows < 15 ? num_windows : 15)) # maximum 15 lines, which is default line number for fuzzel
 
-selection_window_id=$(echo "$window_information" | fuzzel -d -l "$num_lines" -w 64 --prompt " " --accept-nth 3 --counter) || exit 1
+selection_window_id=$(echo "$window_information" | fuzzel -d -l "$num_lines" -w 64 --prompt " " --placeholder "Search for window to be focused" --accept-nth 3 --counter) || exit 1
 
 niri msg action focus-window --id "$selection_window_id" || exit 2
