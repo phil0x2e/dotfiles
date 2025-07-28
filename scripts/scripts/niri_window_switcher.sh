@@ -1,13 +1,18 @@
 #!/usr/bin/env bash
 
-windows_out=$(niri msg windows)
-# get the relevant data in tab separated form
-window_information=$(echo "$windows_out" | grep -oP '(?<=^  Title: ").+(?=")|(?<=^  App ID: ").+(?=")|(?<=^Window ID )\d+(?=:)' | sed 's/\t/ /g' | paste - - - | awk -F '\t' 'BEGIN {OFS="\t"} {print $3,$2,$1}') || exit 1
-echo "$window_information"
+for prog in niri jq; do
+  command -v "$prog" >/dev/null 2>&1 || {
+    echo "Error: $prog is not installed."
+    exit 1
+  }
+done
 
-num_windows=$(echo "$window_information" | wc -l)
+windows_json=$(niri msg -j windows) || exit 2
+
+num_windows=$(echo "$windows_json" | jq '. | length') || exit 3
 num_lines=$((num_windows < 15 ? num_windows : 15)) # maximum 15 lines, which is default line number for fuzzel
 
-selection_window_id=$(echo "$window_information" | fuzzel -d -l "$num_lines" -w 64 --prompt " " --placeholder "Search for window to be focused" --accept-nth 3 --counter) || exit 1
+formatted_windows=$(echo "$windows_json" | jq -r '.[] | "\(.app_id)\t\(.title)\t\(.id)"') || exit 4
+selection_window_id=$(echo "$formatted_windows" | fuzzel -d -l "$num_lines" -w 64 --prompt " " --placeholder "Search for window to be focused" --accept-nth 3 --counter --tab 4) || exit 0
 
-niri msg action focus-window --id "$selection_window_id" || exit 2
+niri msg action focus-window --id "$selection_window_id" || exit 5
