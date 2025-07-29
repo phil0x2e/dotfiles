@@ -381,6 +381,7 @@ binds {
     Ctrl+Alt+Delete hotkey-overlay-title="Powermenu" { spawn "/home/phil/scripts/powermenu.sh"; }
     Ctrl+Alt+C hotkey-overlay-title="Calc" { spawn "/home/phil/scripts/calc.sh"; }
     Ctrl+Alt+O hotkey-overlay-title="Enable/disable outputs" { spawn "/home/phil/scripts/niri_outputs.sh"; }
+    Ctrl+Alt+p hotkey-overlay-title="Pick color" { spawn "/home/phil/scripts/niri_pick_color.sh"; }
     Ctrl+Alt+W hotkey-overlay-title="Window switcher" { spawn "/home/phil/scripts/niri_window_switcher.sh"; }
     Alt+Tab hotkey-overlay-title="Window switcher" { spawn "/home/phil/scripts/niri_window_switcher.sh"; }
     Ctrl+Alt+D hotkey-overlay-title="Mako: dismiss last notification" { spawn "makoctl" "dismiss"; }
