@@ -10,3 +10,6 @@ hex_color=$(echo "$pick_color_output" | grep -oP '(?<=^Hex: )#\w{6}') || exit 1
 notify-send "$pick_color_output" || exit 1
 
 wl-copy "$hex_color" || exit 1
+
+sleep 0.25
+notify-send -t 1250 "Copied Hex color to clipboard"
