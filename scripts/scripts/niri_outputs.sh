@@ -18,3 +18,5 @@ selected_output=$(echo "$formatted_outputs" | fuzzel -d -p '󰍺 > ' --placehold
 selected_action=$(echo -e "󰍹 on\n󰶐 off" | fuzzel -d -p ' > ' --placeholder="Turn output on/off" -l 2 | sed 's/^.* //') || exit 5
 
 niri msg output "$selected_output" "$selected_action" || exit 6
+
+killall kanshi && notify-send 'Killed kanshi, to not overwrite output configuration.'
