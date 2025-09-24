@@ -302,6 +302,13 @@ animations {
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Window-Rules
 
+// https://github.com/YaLTeR/niri/issues/1872
+layer-rule {
+    match namespace="waybar"
+    match at-startup=true
+    opacity 0.99 // this fixes the black fill
+}
+
 // Work around WezTerm's initial configure bug
 // by setting an empty default-column-width.
 window-rule {
