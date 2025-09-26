@@ -7,7 +7,7 @@
 pick_color_output=$(niri msg pick-color) || exit 1
 hex_color=$(echo "$pick_color_output" | grep -oP '(?<=^Hex: )#\w{6}') || exit 1
 
-notify-send "$pick_color_output" || exit 1
+notify-send 'Color picked' "$pick_color_output <span color=\"$hex_color\">██</span>" || exit 1
 
 wl-copy "$hex_color" || exit 1
 
