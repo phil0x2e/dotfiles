@@ -40,7 +40,7 @@
 }
 
 window#waybar {
-  border-radius: 12px;
+  border-radius: 6px;
   background-color: @background;
   border-bottom: 3px solid rgba(100, 114, 125, 0.5);
   color: @text;
