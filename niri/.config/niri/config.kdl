@@ -306,7 +306,12 @@ animations {
 layer-rule {
     match namespace="waybar"
     match at-startup=true
-    opacity 0.99 // this fixes the black fill
+    opacity 0.95 // this fixes the black fill
+}
+
+window-rule {
+    match app-id=r#"^kitty$"#
+    opacity 0.95
 }
 
 // Work around WezTerm's initial configure bug
@@ -358,6 +363,36 @@ switch-events {
     lid-open { spawn "notify-send" "Welcome back!"; }
 }
 
+recent-windows {
+    // off
+    debounce-ms 750
+    open-delay-ms 150
+
+    highlight {
+        active-color "#999999ff"
+        urgent-color "#ff9999ff"
+        padding 30
+        corner-radius 6
+    }
+
+    previews {
+        max-height 480
+        max-scale 0.5
+    }
+
+    binds {
+        Alt+Tab                     { next-window; }
+        Alt+Shift+Tab               { previous-window; }
+        Alt+dead_circumflex         { next-window     filter="app-id"; }
+        Alt+Shift+dead_circumflex   { previous-window filter="app-id"; }
+
+        Mod+Tab                     { next-window; }
+        Mod+Shift+Tab               { previous-window; }
+        Mod+dead_circumflex         { next-window     filter="app-id"; }
+        Mod+Shift+dead_circumflex   { previous-window filter="app-id"; }
+    }
+}
+
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
     // in the end. To find an XKB name for a particular key, you may use a program
@@ -390,8 +425,6 @@ binds {
     XF86Calculator hotkey-overlay-title="Calc" { spawn "/home/phil/scripts/calc.sh"; }
     Ctrl+Alt+O hotkey-overlay-title="Enable/disable outputs" { spawn "/home/phil/scripts/niri_outputs.sh"; }
     Ctrl+Alt+p hotkey-overlay-title="Pick color" { spawn "/home/phil/scripts/niri_pick_color.sh"; }
-    Ctrl+Alt+W hotkey-overlay-title="Window switcher" { spawn "/home/phil/scripts/niri_window_switcher.sh"; }
-    Alt+Tab hotkey-overlay-title="Window switcher" { spawn "/home/phil/scripts/niri_window_switcher.sh"; }
     Ctrl+Alt+D hotkey-overlay-title="Mako: dismiss last notification" { spawn "makoctl" "dismiss"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
