@@ -1,6 +1,16 @@
 [kitty.desktop][Global Shortcuts]
 _launch=Meta+Return
 
+[ksmserver][Global Shortcuts]
+Halt Without Confirmation=
+Lock Session=Meta+Alt+L; Screensaver
+Log Out=Ctrl+Alt+Del
+Log Out Without Confirmation=
+LogOut=
+Reboot=
+Reboot Without Confirmation=
+Shut Down=
+
 [kwin][Global Shortcuts]
 Activate Window Demanding Attention=Meta+Ctrl+A
 ClearLastMouseMark=Meta+Shift+F12
